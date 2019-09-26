@@ -1,19 +1,18 @@
 from django.shortcuts import render,redirect
-from django import forms
-from .forms import RegistrationForm,UpdateUserForm,UpdateProfileFormVerified,UpdateProfileFormNotVerified,Training_Prediction
+from .forms import RegistrationForm,UpdateUserForm,UpdateProfileFormVerified,UpdateProfileFormNotVerified,TrainingPre
 from .models import Profile, Training_Prediction
 import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt 
 from sklearn.model_selection  import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression 
 from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.externals import joblib
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.core.exceptions import ValidationError
-
-
 
 def register(request):
     if request.method == 'POST':
@@ -58,7 +57,6 @@ def update_profile(request):
             user_form.save()
             profile_form.save()
             return redirect('student:view_profile')
-
     else:
         if request.user.profile.verified:
             user_form = UpdateUserForm(instance=request.user)
@@ -71,6 +69,36 @@ def update_profile(request):
     context = {'user_form': user_form, 'profile_form': profile_form, 'profile': profile, 'user': user}
     return render(request, 'user/update_profile.html', context)
 
-def predict_data(request):
-    pass
+def pre_form(request):
+    dataset = pd.read_csv('/static/student.csv')
+    dataset['co_cur'] = dataset['co_cur'].map({'yes': 1, 'no': 0})
+    X = dataset.iloc[:, [1, 2, 3, 4]].values
+    y = dataset.iloc[:, 5].values
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+    rclassifier = RandomForestClassifier(n_estimators=10, criterion='entropy', random_state=0)
+    rclassifier.fit(X_train, y_train)
+    y_pred = rclassifier.predict(X_test)
+    # Making confusion matrix
+    cn = confusion_matrix(y_test, y_pred)
+    acc=accuracy_score(y_test, y_pred)
+    # save model to disk
+    joblib.dump(rclassifier,'student_model.pkl')
+    # predict on saved model
+    load_model = joblib.load('student_model.pkl')
+    xy = 0
+    yz = 3
+    zx = 5
+    mn = 0
+    g = load_model.predict([[xy, yz, zx, mn]])
+    context = {'g':g,'acc':acc}
+    return render(request, 'home/job.html', context)
 
+def predict_data(request):
+    if request.method == "POST":
+        user_form = TrainingPre(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            return redirect('student:pre_form')
+    else:
+        form = TrainingPre()
+    return render(request, 'registration/predict.html', {'form': form})
