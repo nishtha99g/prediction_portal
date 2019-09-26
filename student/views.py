@@ -70,7 +70,7 @@ def update_profile(request):
     return render(request, 'user/update_profile.html', context)
 
 def pre_form(request):
-    dataset = pd.read_csv('/static/student.csv')
+    dataset = pd.read_csv('/home/mahima/Documents/minor/prediction_portal/static/student.csv')
     dataset['co_cur'] = dataset['co_cur'].map({'yes': 1, 'no': 0})
     X = dataset.iloc[:, [1, 2, 3, 4]].values
     y = dataset.iloc[:, 5].values
@@ -85,19 +85,26 @@ def pre_form(request):
     joblib.dump(rclassifier,'student_model.pkl')
     # predict on saved model
     load_model = joblib.load('student_model.pkl')
-    xy = 0
-    yz = 3
-    zx = 5
-    mn = 0
+    profile = request.user.profile
+    xy = profile.cgpa
+    yz = profile.projects
+    zx = profile.Languages
+    if profile.co_cur==TRUE:
+        mn=1
+    else:
+        mn=0
+    print(mn)
     g = load_model.predict([[xy, yz, zx, mn]])
     context = {'g':g,'acc':acc}
+    print(g)
+    print(acc)
     return render(request, 'home/job.html', context)
 
 def predict_data(request):
     if request.method == "POST":
-        user_form = TrainingPre(request.POST, instance=request.user)
-        if user_form.is_valid():
-            user_form.save()
+        form = TrainingPre(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
             return redirect('student:pre_form')
     else:
         form = TrainingPre()
