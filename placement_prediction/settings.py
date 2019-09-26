@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'student',
     'widget_tweaks',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -71,8 +70,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'placement_prediction.wsgi.application'
-
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -82,8 +79,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 

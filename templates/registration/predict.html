@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load widget_tweaks%}
+{% block head %}
+    <title>Predict Form</title>
+{% endblock %}
+
+{% block body %}
+
+
+
+    <div class=" container section-top-border" style="margin-left: auto ; padding-top: 50px">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="mb-30">Enter</h3>
+
+                <form action="" method="post">
+                    {% csrf_token %}
+
+                    {% if form.errors %}
+                        <div class="mt-10">
+                            <input type="text" name="roll_no" value="{{ form.roll_no.value }}" placeholder="roll no"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'roll_no'" required
+                                   class="single-input">
+                            <p>{{ form.roll_no.errors }}</p>
+                        </div>
+                        <div class="row">
+                            <div class="mt-10 col-lg-6 ">
+                                <input type="text" name="cgpa" value="{{ form.cgpa.value }}"
+                                       placeholder="cg" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'cgpa'" required="" class="single-input">
+                                <p>{{ form.cgpa.errors }}</p>
+                            </div>
+                            <div class="mt-10 col-lg-6">
+                                <input type="text" name="projects" value="{{ form.projects.value }}"
+                                       placeholder="projects" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'Projects'" required="" class="single-input">
+                                <p>{{ form.projects.errors }}</p>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="Languages" value="{{ form.Languages.value }}" placeholder="Email address"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required
+                                   class="single-input">
+                            <p>{{ form.languages.errors }}</p>
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="co_cur" placeholder="co_cur"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'co_cur'" required
+                                   class="single-input">
+                            <p>{{ form.co_cur.errors }}</p>
+                        </div>
+
+                        <div class="mt-10">
+                            <button type="submit" class="genric-btn success-border radius">Predict</button>
+                        </div>
+
+                        </div>
+
+
+                        </div>
+                    {% else %}
+
+<div class="mt-10">
+                            <input type="text" name="roll_no" value="{{ form.roll_no.value }}" placeholder="roll no"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'roll_no'" required
+                                   class="single-input">
+                            <p>{{ form.roll_no.errors }}</p>
+                        </div>
+                        <div class="row">
+                            <div class="mt-10 col-lg-6 ">
+                                <input type="text" name="cgpa" value="{{ form.cgpa.value }}"
+                                       placeholder="cg" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'cgpa'" required="" class="single-input">
+                                <p>{{ form.cgpa.errors }}</p>
+                            </div>
+                            <div class="mt-10 col-lg-6">
+                                <input type="text" name="projects" value="{{ form.projects.value }}"
+                                       placeholder="projects" onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'Projects'" required="" class="single-input">
+                                <p>{{ form.projects.errors }}</p>
+                            </div>
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="Languages" value="{{ form.Languages.value }}" placeholder="Email address"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required
+                                   class="single-input">
+                            <p>{{ form.languages.errors }}</p>
+                        </div>
+                        <div class="mt-10">
+                            <input type="text" name="co_cur" placeholder="co_cur"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'co_cur'" required
+                                   class="single-input">
+                            <p>{{ form.co_cur.errors }}</p>
+                        </div>
+
+                        <div class="mt-10">
+                            <button type="submit" class="genric-btn success-border radius">Predict</button>
+                        </div>
+
+                        </div>
+
+
+                        </div>
+                    {% endif %}
+    </form>
+    </div>
+{% endblock %}
