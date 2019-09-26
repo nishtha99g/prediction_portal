@@ -49,5 +49,5 @@ class UpdateProfileFormVerified(forms.ModelForm):
 class TrainingPre(forms.ModelForm):
     class Meta:
         model = Training_Prediction
-        exclude = []
+        exclude = ['roll_no']
  
