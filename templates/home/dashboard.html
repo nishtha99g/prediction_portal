@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Dashboard</title>
+
+    <style>
+
+        .circular--square {
+            border-radius: 40px;
+            border-radius: 50%;
+            margin-left: -10px;
+        }
+
+        span {
+            background: white;
+            border-radius: 20px black;
+            font-size: 25px;
+            text-align: center;
+            margin-right: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .genric-btn {
+            min-width: 250px;
+            background: #4b6d71 !important;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class=" col-md-3 col-lg-3 card text-black card-color">
+
+            <div class="card-header">Profile</div>
+
+            <div class="card-body">
+                {% if profile.photo %}
+                    <div class="text-center">
+                        <a href="{{ profile.photo.url }}" class="img-pop-up">
+                            <img src="{{ profile.photo.url }}" class="circular--square" width="80" height="70"/>
+                        </a>
+                    </div>
+
+                {% endif %}
+                <p class="text-center">{{ request.user.get_full_name }}</p>
+                <p><i class="fa fa-envelope"> {{ request.user.email }}</i></p>
+                <p><i class="fa fa-phone"> {{ profile.contact }}</i></p>
+                <p>Username: {{ user.username }}</p>
+                <p>Gender :{{ profile.get_gender_display }}</p>
+                <p>DOB: {{ profile.date_of_birth }}</p>
+                <p>Blood Group: {{ profile.get_blood_group_display }}</p>
+                <p>Category: {{ profile.get_category_display }}</p>
+
+                <p>Address: {{ profile.address }}</p>
+                <p>City: {{ profile.city }}</p>
+                <p>State: {{ profile.state }}</p>
+
+            </div>
+        </div>
+         <div class="container">
+          <a href="#"> Company trends</a>
+         
+         </div>
+
+        
+    </div>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'custom/main.css' %}">
+
+    {% block title %}
+        <title>Base</title>
+    {% endblock %}
+
+
+
+</head>
+<body>
+
+
+<header id="header" class="noprint">
+
+    <div class="text-right container">
+
+        {% if request.user.is_authenticated %}
+            <ul style="
+                display: flex;
+                float: right;
+            ">
+                <li class="mr-2"><a href="{% url 'logout' %}">
+                    <i class="fa fa-power-off"></i>
+                    Logout</a></li>
+                <li class="mr-2"><a href="{% url 'password_reset' %}">
+                    <i class="fa fa-group"></i>
+                    Reset Password</a></li>
+
+            </ul>
+
+        {% else %}
+            <ul style="
+                display: flex;
+                float: right;
+            ">
+                <li class="mr-2"><a href="{% url 'student:register' %}">
+                    <i class="fa fa-power-off"></i>
+                    Register</a></li>
+                <li class="mr-2"><a href="{% url 'login' %}">
+                    <i class="fa fa-male"></i>
+                    Login</a></li>
+            </ul>
+        {% endif %}
+
+    </div>
+
+
+    <div class="container">
+        <div class="row align-items-center justify-content-between d-flex" style="width: 100%;">
+
+            <div id="logo">
+                <a href="{% url 'home' %}"><img src="{% static 'bootstrap/img/logo.png' %}" alt="" title=""
+                                                height="60/"></a>
+            </div>
+            <nav id="nav-menu-container align-items-right">
+                <ul class="nav-menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+
+                    <!-- Home -->
+                    <li>
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+
+                    {% if request.user.is_authenticated %}
+                        <li><a href="{% url 'student:dashboard' %}">Dashboard</a></li>
+                        <li> <a href="{% url 'student:view_profile'%}">View Profile</a></li>
+                        <li>Hello {{ request.user.get_full_name }}</li>
+                    {% endif %}
+
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+{% block body %}
+
+{% endblock %}
+
+<footer class="footer-area noprint mt-5" style="padding: 30px 0px">
+
+    <div class="row text-center">
+        <p class="col-sm-12 footer-text text-white " style="margin-top: 1rem;">
+            Copyright ©
+            <script>document.write(new Date().getFullYear());</script>
+            2019
+            All rights reserved | This website is developed with <i class="fa fa-heart-o" aria-hidden="true"></i> by
+            <a href="#" target="_blank">Students</a>
+            Interns
+        </p>
+
+    </div>
+</footer>
+</body>
+
+
+<script src="{% static 'custom/jquery-3.3.1.slim.min.js' %}"></script>
+<script src="{% static 'custom/popper.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src={% static 'qrcode/qrcode.js' %}></script>
+
+
+{% block script %}
+{% endblock %}
+</html>

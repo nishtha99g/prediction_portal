@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Profile</title>
+    <style>
+        b {
+            color: black;
+        }
+
+        p {
+            font-family: "Poppins", sans-serif;
+            font-size: 15px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mt-50">
+            <div class="col-md-9 col-12">
+                <div class="row">
+                    <div class="col-md-5 ">
+                        {% if profile.photo %}
+
+                            <img class=" img-popup img-thumbnail mx-auto " src="{{ profile.photo.url }}" alt=" No Image"
+                                 style="width:200px; height: 200px;">
+
+                        {% endif %}
+                    </div>
+                    <div class="col-md-7 text-md-left ">
+                        <p>
+                        <h3 style="text-transform: uppercase">{{ user.get_full_name }}</h3></p>
+                        <p><h4 style="text-transform: uppercase">{{ profile.get_designation_display }}</h4></p>
+                        <p><i class="fa fa-envelope" style="font-size:16px">  {{ user.email }}</i></p>
+                        <p><i class="fa fa-phone" style="font-size:16px">  {{ profile.contact }}</i></p>
+
+                    </div>
+                </div>
+                <div class="row mt-40 mb-40">
+                    <div class="col-md-5 text-md-left">
+                        <h4>DETAILS</h4>
+                        <p></p>
+                        <p><b>USERNAME : </b>{{ user }}</p>
+                        <p><b>ROLL NO. : </b>{{ profile.roll_no }}</p>
+                        <p><b>DATE OF BIRTH : </b>{{ profile.date_of_birth }}</p>
+                        <p><b>BRANCH : </b>{{ profile.branch }}</p>
+                        <p><b>GENDER : </b>{{ profile.get_gender_display }}</p>
+                        <p><b>BLOOD GROUP : </b>{{ profile.get_blood_group_display }}</p>
+                        <p><b>CATEGORY : </b>{{ profile.get_category_display }}</p>
+                        <p><b>CGPA : </b>{{ profile.cgpa }}</p>
+                        <p><b>PROJECTS: </b>{{ profile.projects }}</p>
+                        <p><b>Description : </b>{{ profile.description }}</p>
+                        <p><b>LANGUAGES : </b>{{ profile.languages }}</p>
+                        <p><b>CO-CURRICULAR: </b>{{ profile.co_cur }}</p>
+
+                    </div>
+                    <div class=" col-md-5 text-md-left ">
+                        <h4>ADDRESS</h4>
+                        <p></p>
+                        <p><b>HOUSE : </b>{{ profile.address }}</p>
+                        <p></p>
+                        <p><b>CITY : </b>{{ profile.city }}</p>
+                        <p></p>
+                        <p><b>STATE : </b>{{ profile.state }}</p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-md-3 col-12 center">
+                <a class="genric-btn success-border radius mb-3 float-right" href="{% url 'student:update_profile' %}">Update
+                    Profile</a>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
