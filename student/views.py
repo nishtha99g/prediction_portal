@@ -70,7 +70,7 @@ def update_profile(request):
     return render(request, 'user/update_profile.html', context)
 
 def pre_form(request):
-    dataset = pd.read_csv('/home/mahima/Documents/minor/prediction_portal/static/student.csv')
+    dataset = pd.read_csv('D:\collgp\prediction_portal\static\student.csv')
     dataset['co_cur'] = dataset['co_cur'].map({'yes': 1, 'no': 0})
     X = dataset.iloc[:, [1, 2, 3, 4]].values
     y = dataset.iloc[:, 5].values
@@ -89,23 +89,19 @@ def pre_form(request):
     xy = profile.cgpa
     yz = profile.projects
     zx = profile.Languages
-    if profile.co_cur==TRUE:
+    if profile.co_cur==True:
         mn=1
     else:
         mn=0
     print(mn)
     g = load_model.predict([[xy, yz, zx, mn]])
-    context = {'g':g,'acc':acc}
+    g=g[0]
+    g=g.item()
     print(g)
     print(acc)
-    return render(request, 'home/job.html', context)
-
-def predict_data(request):
-    if request.method == "POST":
-        form = TrainingPre(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            return redirect('student:pre_form')
-    else:
-        form = TrainingPre()
-    return render(request, 'registration/predict.html', {'form': form})
+    if(g==3):
+             return render(request, 'home/3.html')
+    if(g==2):
+             return render(request, 'home/2.html')
+    if(g==1):
+             return render(request, 'home/1.html')

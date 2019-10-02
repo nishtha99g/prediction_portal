@@ -48,10 +48,10 @@
                                         {{ user.get_full_name }}
                                     </div>
                                     <div class="col-md-4 col-lg-4 text-capitalize text-dark mt-8">
-                                        <p>Roll No.</p>
+                                        <p>User Type</p>
                                     </div>
                                     <div class="col-md-6 col-lg-6">
-                                        {{ profile.roll_no }}
+                                        {{ profile.get_type_display }}
                                     </div>
                                     <div class="col-md-4 col-lg-4 text-capitalize text-dark mt-8">
                                         <p>Gender</p>
@@ -162,7 +162,7 @@
                     </div>
                 {% endfor %}
                 <div class="mt-10">
-                 <button type="submit" class="genric-btn success-border radius" style="margin-left: 150px" >Update</button>
+                 <button type="submit" class="genric-btn success-border radius" style="margin-left: 150px" >Confirm</button>
                 </div>
                 </div>
             {% endif %}

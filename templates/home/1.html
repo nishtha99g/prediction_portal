@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Result</title>
+{% endblock %}
+{% block body %}
+<div class="container " style="padding: 150px">
+        <h1 style="font-weight:bold;">OOPS!!!!</h1>
+        <p>
+          You need to work hard to achieve your goal..
+        </p>
+
+</div>
+<script>
+
+var img = document.createElement("img");
+img.src = "{% static '/bootstrap/img/red.png' %}";
+img.height = 100;
+img.width = 100;
+document.body.appendChild(img);
+
+</script>
+</div>
+
+{% endblock %}

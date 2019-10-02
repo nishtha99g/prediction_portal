@@ -23,19 +23,22 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container" style="padding-top: 50px;padding-bottom: 100px;margin-left: auto;">
+    <div class="container" style="padding-top: 50px;padding-bottom: 100px;margin-left: auto;height:600px;">
         {% if form.errors %}
-            <h5>Please Check Your Username And Password</h5>
+
+            <h5 style="color:red;"> <i class="fa fa-warning" style="height:10px;width:10px;"></i> &nbsp &nbsp Please Check Your Username And Password!</h5>
         {% endif %}
-        <h1 class="h3 mb-30 font-weight-heavy">Please sign in</h1>
+        <h1 class="h3 mb-30 font-weight-heavy">Sign in:</h1>
         <form method="post">
             {% csrf_token %}
+            <div style="font-weight:bold;float:left;width:100px;height:50px;padding:5px 5px 5px 0px;">User Name:</div>
             <div class="mt-10">
                 <input type="text" name="username" placeholder="User Name" onfocus="this.placeholder = ''"
                        onblur="this.placeholder = 'User Name'" required class="single-input col-md-5">
             </div>
             <p></p>
             <p></p>
+            <div style="font-weight:bold;float:left;width:100px;height:50px;padding:5px 5px 5px 0px;">Password: </div>
             <div class="mt-10">
                 <input type="password" name="password" placeholder="Pass Word" onfocus="this.placeholder = ''"
                        onblur="this.placeholder = 'Password'" required class="single-input col-md-5">

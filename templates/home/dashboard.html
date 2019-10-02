@@ -31,10 +31,9 @@
 
 {% block body %}
     <div class="row">
-        <div class=" col-md-3 col-lg-3 card text-black card-color">
+        <div class=" col-sm-3 card text-black card-color">
 
-            <div class="card-header">Profile</div>
-
+            <div class="card-header" style="margin-left:10px;"><b style="font-size:18px;padding:5px 50px;"><u style="color:black;">CONCISE PROFILE</u></b></div>
             <div class="card-body">
                 {% if profile.photo %}
                     <div class="text-center">
@@ -44,27 +43,47 @@
                     </div>
 
                 {% endif %}
-                <p class="text-center">{{ request.user.get_full_name }}</p>
+                <p class="text-center"><b>{{ request.user.get_full_name }}</b></p>
                 <p><i class="fa fa-envelope"> {{ request.user.email }}</i></p>
                 <p><i class="fa fa-phone"> {{ profile.contact }}</i></p>
-                <p>Username: {{ user.username }}</p>
-                <p>Gender :{{ profile.get_gender_display }}</p>
-                <p>DOB: {{ profile.date_of_birth }}</p>
-                <p>Blood Group: {{ profile.get_blood_group_display }}</p>
-                <p>Category: {{ profile.get_category_display }}</p>
+                <p><b>Username : </b> {{ user }}</p>
+                <p><b>Gender : </b> {{ profile.get_gender_display }}</p>
+                <p><b>DOB : </b> {{ profile.date_of_birth }}</p>
+                <p><b>Blood Group : </b> {{ profile.get_blood_group_display }}</p>
+                <p><b> Category : </b> {{ profile.get_category_display }}</p>
 
-                <p>Address: {{ profile.address }}</p>
-                <p>City: {{ profile.city }}</p>
-                <p>State: {{ profile.state }}</p>
+                <p><b>Address:</b> {{ profile.address }} <br/>
+                    <b> City : </b> {{ profile.city }} <br/>
+                    <b> State: </b> {{ profile.state }}</p>
 
             </div>
         </div>
-         <div class="container">
-          <a href="#"> Company trends</a>
-         
-         </div>
+
+          <!--  <a href="#"> Company trends</a> -->
+            <div class="col-sm-3 card text-black card-color" style="margin-left:5rem;margin-top:4rem;">
+                <div class="card bg-primary" style="width: 18rem;">
+  <img src="{% static 'bootstrap/img/card_image1.jpg' %}" class="card-img-top" alt="Check past scores" height="250/">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Check past scores</a>
+  </div>
+</div>
+            </div>
+
+        <div class="col-sm-3 card text-black card-color" style="margin-left:5rem;margin-top:4rem;">
+                <div class="card bg-primary" style="width: 18rem;">
+  <img src="{% static 'bootstrap/img/check_button.png' %}" class="card-img-top" alt="Check current Score">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="{% url 'student:pre_form' %}" class="btn btn-primary">Check score</a>
+  </div>
+</div>
+            </div>
 
         
     </div>
+
 
 {% endblock %}

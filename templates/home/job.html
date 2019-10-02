@@ -1,11 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-<title>Done</title>
+<title>Result</title>
 {% endblock %}
 {% block body %}
-<img class="img-fluid rounded mx-auto d-block mt-5" style="max-height: 500px; height: 450px" src="{% static 'bootstrap/img/logo.png' %}">
-    <b><u><p class="text-center" style="font-size: 20px; padding-bottom: 20px">Regional Remote Sensing Center - WEST</p></u></b>
-<p> {{ g }}</p>
-<p>{{ acc }}</p>
+<button onclick="fn(g)">Start</button>
+<p id="demo"></p>
+<div style="margin:50px;">
+<script>
+    function fn(i){
+if (i==1) {
+var img = document.createElement("img");
+img.src = "red.png";
+img.height = 100;
+img.width = 100;
+ document.body.appendChild(img);
+}
+else if(i==2)
+{
+var img = document.createElement("img");
+img.src = "yellow.jpg";
+img.height = 100;
+img.width = 100;
+ document.body.appendChild(img);
+}
+else if(i==3)
+{
+var img = document.createElement("img");
+img.src = "green.png";
+img.height = 100;
+img.width = 100;
+ document.body.appendChild(img);
+}}
+</script>
+</div>
+
 {% endblock %}

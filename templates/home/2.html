@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Result</title>
+{% endblock %}
+{% block body %}
+<div class="container " style="padding: 150px">
+        <h1 style="font-weight:bold;">FAIR ENOUGH!!!!</h1>
+        <p>
+            Work hard and you will achieve your goal..
+        </p>
+
+</div>
+<script>
+
+var img = document.createElement("img");
+img.src = "{% static '/bootstrap/img/yellow.jpg' %}";
+img.height = 100;
+img.width = 100;
+document.body.appendChild(img);
+
+</script>
+</div>
+
+{% endblock %}

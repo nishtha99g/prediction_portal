@@ -58,6 +58,7 @@ body {
     position: relative;
     overflow-x: hidden;
     max-width: inherit;
+    background-color:white;
 }
 
 ol, ul {
@@ -88,6 +89,7 @@ iframe {
 a, a:focus, a:hover {
     text-decoration: none;
     outline: 0;
+
 }
 
 .btn.active.focus,
@@ -244,8 +246,10 @@ td, th {
     font-style: italic;
 }
 
+
 .mt-10 {
     margin-top: 10px;
+    border-radius:5px;
 }
 
 .mt-15 {
@@ -2024,6 +2028,9 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     outline: none;
 }
+.nav-menu a:hover{
+color:#007bff ;
+}
 
 .nav-menu > li {
     margin-left: 10px;
@@ -3057,7 +3064,7 @@ h6 {
 
 .card-color {
     margin: 5px 0px;
-    background-color: #f5f5f5;
+    background-color: white;
 }
 
 

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Result</title>
+{% endblock %}
+{% block body %}
+<div class="container " style="padding: 150px">
+        <h1 style="font-weight:bold;">CONGRATS!!!!</h1>
+        <p>
+            Continue with same pace to achieve your goal..
+        </p>
+
+</div>
+<script>
+
+var img = document.createElement("img");
+img.src = "{% static '/bootstrap/img/green.png' %}";
+img.height = 100;
+img.width = 100;
+document.body.appendChild(img);
+
+</script>
+</div>
+
+{% endblock %}
