@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import Profile,Training_Prediction
+from .models import Profile
 from django.core.exceptions import ValidationError
 
 
@@ -46,8 +46,5 @@ class UpdateProfileFormVerified(forms.ModelForm):
         model = Profile
         exclude = ['user', 'verified', 'category', 'roll_no', 'date_of_birth', 'gender']
 
-class TrainingPre(forms.ModelForm):
-    class Meta:
-        model = Training_Prediction
-        exclude = ['roll_no']
+
  

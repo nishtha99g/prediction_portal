@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from .forms import RegistrationForm,UpdateUserForm,UpdateProfileFormVerified,UpdateProfileFormNotVerified,TrainingPre
-from .models import Profile, Training_Prediction
+from .forms import RegistrationForm,UpdateUserForm,UpdateProfileFormVerified,UpdateProfileFormNotVerified
+from .models import Profile
 import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt 
@@ -69,6 +69,19 @@ def update_profile(request):
     context = {'user_form': user_form, 'profile_form': profile_form, 'profile': profile, 'user': user}
     return render(request, 'user/update_profile.html', context)
 
+def cal(request):
+     profile = request.user.profile
+     x=profile.Languages
+     x=x.lower()
+     tt=x.split(',')
+     count=0
+     for i in tt:
+        if(i=='html')or(i=='css')or(i=='bootstrap')or(i=='prolog'):
+             count=count+1
+        else:
+            count=count+2
+     return count
+
 def pre_form(request):
     dataset = pd.read_csv('D:\collgp\prediction_portal\static\student.csv')
     dataset['co_cur'] = dataset['co_cur'].map({'yes': 1, 'no': 0})
@@ -88,7 +101,8 @@ def pre_form(request):
     profile = request.user.profile
     xy = profile.cgpa
     yz = profile.projects
-    zx = profile.Languages
+    zx = cal(request)
+    print(zx)
     if profile.co_cur==True:
         mn=1
     else:

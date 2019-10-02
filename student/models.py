@@ -25,7 +25,7 @@ class Profile(models.Model):
     cgpa = models.DecimalField(max_digits=4, decimal_places=2, null=False, blank=True, default=0.0)
     projects=models.PositiveIntegerField(null=True, blank=True)
     description=models.CharField(max_length=500)
-    Languages=models.IntegerField(null=False, blank=True, default=0)
+    Languages=models.CharField(max_length=150, null=True, blank=True)
     co_cur=models.BooleanField(default=False)
 
     class Meta:
@@ -46,12 +46,6 @@ class Profile(models.Model):
 
     post_save.connect(create_profile, sender=User)
 
-class Training_Prediction(models.Model):
-    roll_no = models.ForeignKey(Profile,on_delete=None,default='')
-    cgpa = models.DecimalField(max_digits=4, decimal_places=2, null=False, blank=True, default=0.0)
-    projects=models.PositiveIntegerField(null=True, blank=True)
-    Languages=models.IntegerField(null=False, blank=True, default=0)
-    co_cur=models.BooleanField(default=False)
 
 
 
