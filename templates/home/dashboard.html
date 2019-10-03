@@ -31,9 +31,9 @@
 
 {% block body %}
     <div class="row">
-        <div class=" col-sm-3 card text-black card-color">
+        <div class=" col-sm-3 card text-black card-color" style="border:2px solid #00008b;">
 
-            <div class="card-header" style="margin-left:10px;"><b style="font-size:18px;padding:5px 50px;"><u style="color:black;">CONCISE PROFILE</u></b></div>
+            <div class="card-header" style="margin-left:10px;"><b style="font-size:18px;padding:5px 50px;"><u style="color:#00008b;">CONCISE PROFILE</u></b></div>
             <div class="card-body">
                 {% if profile.photo %}
                     <div class="text-center">
@@ -60,24 +60,24 @@
         </div>
 
           <!--  <a href="#"> Company trends</a> -->
-            <div class="col-sm-3 card text-black card-color" style="margin-left:5rem;margin-top:4rem;">
-                <div class="card bg-primary" style="width: 18rem;">
+            <div class="col-sm-3 card text-black card-color" style="margin-left:5rem;margin-top:4rem;border:0px;">
+                <div class="card bg-primary" style="width: 18rem;border:2px solid #00008b;">
   <img src="{% static 'bootstrap/img/card_image1.jpg' %}" class="card-img-top" alt="Check past scores" height="250/">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Check past scores</a>
+    <h5 class="card-title">Past Company Trends</h5>
+    <p class="card-text">To enquire about the data of previous companies that has visited the campus.</p>
+    <a href="#" class="btn btn-primary" style="color:white;background-color:#00008b;">Company Trends</a>
   </div>
 </div>
             </div>
 
-        <div class="col-sm-3 card text-black card-color" style="margin-left:5rem;margin-top:4rem;">
-                <div class="card bg-primary" style="width: 18rem;">
-  <img src="{% static 'bootstrap/img/check_button.png' %}" class="card-img-top" alt="Check current Score">
+        <div class="col-sm-3 card text-black card-color" style="margin-left:5rem;margin-top:4rem;border:0px;">
+                <div class="card bg-primary" style="width: 18rem;border:2px solid #00008b;">
+  <img src="{% static 'bootstrap/img/check_button.png' %}" class="card-img-top" alt="Check current Score" height="250/">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="{% url 'student:pre_form' %}" class="btn btn-primary">Check score</a>
+    <h5 class="card-title">Student Status</h5>
+    <p class="card-text">To check your status for getting placed as per the criteria of distinction low,medium and high.</p>
+    <a href="{% url 'student:pre_form' %}" class="btn btn-primary" style="color:white;background-color:#00008b;">Check Status</a>
   </div>
 </div>
             </div>

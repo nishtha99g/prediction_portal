@@ -36,7 +36,6 @@ def register(request):
 
 def dashboard(request):
     user = request.user.id
-       
     context = {'user': user, 'profile': request.user.profile}
     return render(request, 'home/dashboard.html', context)
 
